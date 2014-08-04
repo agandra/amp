@@ -1,6 +1,6 @@
 <?php namespace Agandra\Amp\Base;
 
-use \Agandra\Amp;
+use \Agandra\Amp\Amp;
 
 class AmpModel extends \Eloquent {
 
