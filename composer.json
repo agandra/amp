@@ -1,0 +1,23 @@
+{
+    "name": "agandra/amp",
+    "description": "Improving Laravel functionality and creating a base reusable code across projects",
+    "license": "MIT",
+    "keywords": ["laravel", "amp"],
+    "authors": [
+        {
+            "name": "Adi Gandra",
+            "email": "agandra@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "4.2.*",
+        "webpatser/laravel-uuid": "1.0.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Agandra\\Amp": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
