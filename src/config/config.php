@@ -12,6 +12,11 @@ return [
 
     ),
 
+    'repo' => array(
+    	//'User'=>'Agandra\Amp\UserRepo' ## Example
+
+    ),
+
 
 
 ];

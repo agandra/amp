@@ -13,6 +13,10 @@ This is a plugin to help me structure projects and stop me from rebuilding the s
 
 	php artisan config:publish agandra/amp
 
+#### Include Service Provider
+
+	\Agandra\Amp\Providers\AmpServiceProvider
+
 ### AMP Philosophy
 
 This package should be primarily used for large packages where the standard Laravel structure does not provide enough organization.  Projects will be broken down into 3 main components: Models, Services, and Repos.  Each component serves a unique purpose.
@@ -44,7 +48,14 @@ The AMP validator works by setting the rules and customMessages array in a model
 
 Example rules attribute:
 
-	$rules = ['create'=>['name'=>'required'],'edit'=>['price'=>'required'],'other_context'=>['name'=>'required']];
+	$rules = [
+				'create'=>
+					['name'=>'required'],
+				'edit'=>
+					['price'=>'required','value'=>'numeric'],
+				'other_context'=>
+					['name'=>'required']
+			];
 
 The validator will only use the context specified when created.  For instance:
 
@@ -71,5 +82,19 @@ If the autosave fails, then there will be validation errors, that you can obtain
 
 The AMP model also has hooks to call before and after saving, and validation.  You can also set the autoHash attribute on the model and it will hash the value before saving to the database.  The saving is also done in a DB Transaction, so if any errors or thrown or the before or after save generate errors, the entire database will remain unchanged.
 
+To use the AMP Model, make your model file extend \Agandra\Amp\Base\AmpModel
+
 ### AMP Reply
+
+### AMP
+
+The main AMP class is just a helper to access the different attributes available through the AMP project.  For instance to access a repo just call 
+	
+	\Amp::repo('RepoName')->query();
+
+To get an instance of the validator just call
+
+	\Amp::validator($input, $class);
+
+Of course these elements are available without calling AMP but are made easier through this class.
 
