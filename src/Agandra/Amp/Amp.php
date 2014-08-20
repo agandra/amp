@@ -30,7 +30,11 @@ class Amp {
 	}
 
 	public function reply() {
-		return new AmpReply();
+		return new Reply();
+	}
+
+	public function check() {
+		return call_user_func(\Config::get('amp::user.check')());	
 	}
 
 	public function user() {

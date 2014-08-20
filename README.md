@@ -86,6 +86,8 @@ To use the AMP Model, make your model file extend \Agandra\Amp\Base\AmpModel
 
 ### AMP Reply
 
+### API
+
 ### AMP
 
 The main AMP class is just a helper to access the different attributes available through the AMP project.  For instance to access a repo just call 

@@ -3,7 +3,7 @@
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Collection;
 
-class AmpReply {
+class Reply {
 
 	/**
 	 * If this request was a success, initialized to false
