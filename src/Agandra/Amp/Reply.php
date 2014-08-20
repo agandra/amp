@@ -240,8 +240,10 @@ class Reply {
 
 		if(is_array($key))
 			$this->data($key);
-		else
-			$this->data[$key] = $data;
+		else {
+			if($key)
+				$this->data[$key] = $data;
+		}
 
 		return $this;
 	}
