@@ -29,12 +29,12 @@ class AmpServiceProvider extends ServiceProvider {
 	public function register()
 	{
 		$this->app['amp'] = $this->app->share(function($app) {
-			return new Agandra\Amp\Amp();
+			return new \Agandra\Amp\Amp();
 		});
 
 		$this->app->booting(function() {
 			$loader = \Illuminate\Foundation\AliasLoader::getInstance();
-			$loader->alias('Amp', 'Agandra\Amp\Facades\AmpFacade');
+			$loader->alias('Amp', '\Agandra\Amp\Facades\AmpFacade');
 		});
 	}
 
