@@ -63,11 +63,11 @@ class AmpModel extends \Eloquent {
 	public function context($context) {
 		if($context === false){
 			$this->context = false;
-			return $this;
+		} else {
+			$this->context[] = $context;
 		}
 
-		$this->context[] = $context;
-
+		return $this;
 	}
 
 	/*
@@ -111,9 +111,10 @@ class AmpModel extends \Eloquent {
 				if(!$this->validate($context, $data)) {
 					return false;
 				}
+
 			}
 
-			if(!isset($data[$this->userColumnKey()]) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
+			if(!array_key_exists($this->userColumnKey, $data) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
 				$data[$this->userColumnKey()] = \Amp::user()->id;
 
 			// AutoHash all variables that need to be protected
