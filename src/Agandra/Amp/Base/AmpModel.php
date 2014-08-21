@@ -29,6 +29,8 @@ class AmpModel extends \Eloquent {
 	 * @var array
 	 */
 	protected $autoHash = [];
+
+	protected $context = [];
  
 
 	/*
@@ -58,6 +60,16 @@ class AmpModel extends \Eloquent {
 		return \Config::get('amp::userColumnKeyName');
 	}
 
+	public function context($context) {
+		if($context === false){
+			$this->context = false;
+			return $this;
+		}
+
+		$this->context[] = $context;
+
+	}
+
 	/*
 	 * Automatically run validation rules, if they pass save the record to the DB, otherwise return validation messages
 	 */
@@ -84,14 +96,21 @@ class AmpModel extends \Eloquent {
 			$exists = $this->exists;
 
 			// Choose current ruleset
-			if($exists && isset($this->rules['edit']))
-				$context[] = 'edit';
-			elseif(!$exists && isset($this->rules['create']))
-				$context[] = 'create';
+			if($this->context !== false) {
 
-			// Validate
-			if(!$this->validate($context, $data)) {
-				return false;
+				if(empty($this->context)) {
+					if($exists && isset($this->rules['edit']))
+						$context[] = 'edit';
+					elseif(!$exists && isset($this->rules['create']))
+						$context[] = 'create';
+				} else {
+					$context = $this->context;
+				}
+				
+				// Validate
+				if(!$this->validate($context, $data)) {
+					return false;
+				}
 			}
 
 			if(!isset($data[$this->userColumnKey()]) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
