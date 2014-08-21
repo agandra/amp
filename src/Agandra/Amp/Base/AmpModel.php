@@ -114,7 +114,7 @@ class AmpModel extends \Eloquent {
 
 			}
 
-			if(!array_key_exists($this->userColumnKey, $data) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
+			if(!array_key_exists($this->userColumnKey(), $data) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
 				$data[$this->userColumnKey()] = \Amp::user()->id;
 
 			// AutoHash all variables that need to be protected
