@@ -28,7 +28,7 @@ class AmpServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app['repo'] = $this->app->share(function($app) {
+		$this->app['amp'] = $this->app->share(function($app) {
 			return new Agandra\Amp\Amp();
 		});
 
