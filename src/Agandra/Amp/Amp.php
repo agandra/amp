@@ -34,12 +34,12 @@ class Amp {
 	}
 
 	public function check() {
-		return call_user_func(\Config::get('amp::user.check')());	
+		return call_user_func(\Config::get('amp::user.check'));	
 	}
 
 	public function user() {
 		if(!$this->user)
-			return $this->user = call_user_func(\Config::get('amp::user.current')());		
+			return $this->user = call_user_func(\Config::get('amp::user.current'));		
 
 		return $this->user;
 	}
