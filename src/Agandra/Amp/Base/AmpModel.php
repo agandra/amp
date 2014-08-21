@@ -1,7 +1,5 @@
 <?php namespace Agandra\Amp\Base;
 
-use \Agandra\Amp\Amp;
-
 class AmpModel extends \Eloquent {
 
 	/**
@@ -96,8 +94,8 @@ class AmpModel extends \Eloquent {
 				return false;
 			}
 
-			if(!isset($data[$this->userColumnKey()]) && in_array($this->userColumnKey(), $this->fillable, true) && Amp::user())
-				$data[$this->userColumnKey()] = Amp::user()->id;
+			if(!isset($data[$this->userColumnKey()]) && in_array($this->userColumnKey(), $this->fillable, true) && \Amp::user())
+				$data[$this->userColumnKey()] = \Amp::user()->id;
 
 			// AutoHash all variables that need to be protected
 			if(is_array($this->autoHash)) {
@@ -136,7 +134,7 @@ class AmpModel extends \Eloquent {
 		if(!$data) 
 			$data = \Input::all();
 
-		$valid = Amp::validator($data, $this);
+		$valid = \Amp::validator($data, $this);
 
 		// Allows us to add different contexts for validation
 		foreach($contexts as $context) {
