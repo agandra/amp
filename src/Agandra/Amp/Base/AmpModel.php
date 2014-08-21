@@ -57,7 +57,9 @@ class AmpModel extends \Eloquent {
 	 * Return user column key
 	 */
 	public function userColumnKey() {
-		return \Config::get('agandra/amp::userColumnKeyName');
+		$key = \Config::get('amp::userColumnKeyName');
+		var_dump($key);
+		return \Config::get('amp::userColumnKeyName');
 	}
 
 	public function context($context) {
