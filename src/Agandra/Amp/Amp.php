@@ -34,12 +34,12 @@ class Amp {
 	}
 
 	public function check() {
-		return call_user_func(\Config::get('amp::user.check'));	
+		return call_user_func(\Config::get('agandra/amp::user.check'));	
 	}
 
 	public function user() {
 		if(!$this->user)
-			return $this->user = call_user_func(\Config::get('amp::user.current'));		
+			return $this->user = call_user_func(\Config::get('agandra/amp::user.current'));		
 
 		return $this->user;
 	}
@@ -63,7 +63,7 @@ class Amp {
 	public function repo($class) {
 		$class = ucfirst($class);
 		if(!isset($this->repoClasses[$class])) {
-			$fullClass = \Config::get('amp::repo.'.$class);
+			$fullClass = \Config::get('agandra/amp::repo.'.$class);
 			if(!$fullClass) 
 				throw new RepoNotFoundException($class.' was not found in the Repo config file.');
 
