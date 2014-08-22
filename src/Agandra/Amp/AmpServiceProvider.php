@@ -1,4 +1,4 @@
-<?php namespace Agandra\Amp\Providers;
+<?php namespace Agandra\Amp;
 
 use Illuminate\Support\ServiceProvider;
 
