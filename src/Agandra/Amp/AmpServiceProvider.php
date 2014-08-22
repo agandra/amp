@@ -18,7 +18,7 @@ class AmpServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('agandra/amp', 'amp', __DIR__.'/../../..');
+		$this->package('agandra/amp', 'amp');
 	}
 
 	/**
