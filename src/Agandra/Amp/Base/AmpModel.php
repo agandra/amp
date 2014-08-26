@@ -38,20 +38,16 @@ class AmpModel extends \Eloquent {
 	 */
 	protected static function boot() {
 		parent::boot();
-		static::registerEvents();
-	}
 
-	/*
-	 * Will check to see if model has id as int or string (uuid), will then set id for new records
-	 */
-	protected static function registerEvents() {
 		static::saving(function($model){
 			// If model ID is empty, means new record, if it is not incrementing means UUID type
 			if(empty($model->id) && ($model->incrementing === false)) {
 				$model->id = (string) \Uuid::generate(4);
 			}
+			return true;
 		});
 	}
+
 
 	/*
 	 * Return user column key
