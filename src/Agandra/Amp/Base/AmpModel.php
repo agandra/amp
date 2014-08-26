@@ -44,7 +44,6 @@ class AmpModel extends \Eloquent {
 			if(empty($model->id) && ($model->incrementing === false)) {
 				$model->id = (string) \Uuid::generate(4);
 			}
-			return true;
 		});
 	}
 
@@ -139,6 +138,12 @@ class AmpModel extends \Eloquent {
 
 			return true;
 		});
+
+		if(!$exists) {
+			\Event::fire(get_called_class().'.Created', [$this]);
+		} else {
+			\Event::fire(get_called_class().'.Updated', [$this]);
+		}
 		
 		return $db;
 	}
