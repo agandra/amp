@@ -12,7 +12,7 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "4.2.*",
-        "webpatser/laravel-uuid": "1.0.*"
+        "webpatser/laravel-uuid": "dev-master"
     },
     "autoload": {
         "psr-0": {
